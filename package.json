@@ -1,0 +1,49 @@
+{
+    "name": "political-card-game-server",
+    "version": "1.0.0",
+    "description": "Server for Political Card Game",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "next dev",
+        "build": "next build",
+        "frontend": "next start",
+        "backend": "node server.js",
+        "dev:frontend": "next dev",
+        "dev:backend": "nodemon server.js"
+    },
+    "dependencies": {
+        "@reduxjs/toolkit": "^2.7.0",
+        "axios": "^1.8.4",
+        "bufferutil": "^4.0.9",
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "framer-motion": "^10.16.4",
+        "immer": "^10.1.1",
+        "next": "^13.5.6",
+        "prop-types": "^15.8.1",
+        "react": "^18.2.0",
+        "react-dnd": "^16.0.1",
+        "react-dnd-html5-backend": "^16.0.1",
+        "react-dom": "^18.2.0",
+        "react-icons": "^5.5.0",
+        "react-redux": "^9.2.0",
+        "react-toastify": "^11.0.5",
+        "redux": "^5.0.1",
+        "redux-thunk": "^3.1.0",
+        "reselect": "^5.1.1",
+        "socket.io": "^4.7.2",
+        "socket.io-client": "^4.8.1",
+        "styled-components": "^6.1.8",
+        "utf-8-validate": "^6.0.5"
+    },
+    "devDependencies": {
+        "@types/node": "^18.19.86",
+        "@types/react": "^18.2.45",
+        "nodemon": "^3.0.1",
+        "typescript": "^5.3.3"
+    },
+    "engines": {
+        "node": ">=14.0.0"
+    }
+}

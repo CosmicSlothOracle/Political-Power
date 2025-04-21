@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Political Card Game - Welcome</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .tagline {
+            font-style: italic;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 30px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        .card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .btn.host {
+            background-color: #e74c3c;
+        }
+
+        .btn.host:hover {
+            background-color: #c0392b;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            color: #7f8c8d;
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+
+        .game-rules {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+
+        .game-rules h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 10px;
+        }
+
+        .game-rules ul {
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Political Card Game</h1>
+            <p class="tagline">Strategy, Influence, and Power Struggles</p>
+        </div>
+    </header>
+    <div class="container">
+        <div class="main-content">
+            <div class="card">
+                <h2>Host a Game</h2>
+                <p>Create a new game and invite friends to join. Set up game options and get ready to play!</p>
+                <button class="btn host" id="hostGameBtn">Host Game</button>
+            </div>
+            <div class="card">
+                <h2>Join a Game</h2>
+                <p>Enter a game code to join an existing game. Connect with friends and start playing!</p>
+                <button class="btn" id="joinGameBtn">Join Game</button>
+            </div>
+        </div>
+        <div class="game-rules">
+            <h2>How to Play</h2>
+            <p>Political Card Game is a strategic card game where players compete for influence and power in the
+                political arena.</p>
+            <ul>
+                <li>Play cards to gain influence and mandates</li>
+                <li>Form coalitions with other players for mutual benefits</li>
+                <li>Navigate through various game phases including play, effect, resolution, and backfire</li>
+                <li>The first player to reach 61 mandates wins the game</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Host Game Modal -->
+    <div id="hostGameModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeHostModal">&times;</span>
+            <h2>Host a New Game</h2>
+            <form id="hostGameForm">
+                <div class="form-group">
+                    <label for="hostName">Your Name:</label>
+                    <input type="text" id="hostName" required>
+                </div>
+                <div class="form-group">
+                    <label for="gameIdHost">Game ID (optional):</label>
+                    <input type="text" id="gameIdHost" placeholder="Leave blank for random ID">
+                </div>
+                <button type="submit" class="btn host">Create Game</button>
+            </form>
+        </div>
+    </div>
+    <!-- Join Game Modal -->
+    <div id="joinGameModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeJoinModal">&times;</span>
+            <h2>Join Existing Game</h2>
+            <form id="joinGameForm">
+                <div class="form-group">
+                    <label for="playerName">Your Name:</label>
+                    <input type="text" id="playerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="gameIdJoin">Game ID:</label>
+                    <input type="text" id="gameIdJoin" required>
+                </div>
+                <button type="submit" class="btn">Join Game</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Political Card Game. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Modal handling
+        const hostGameBtn = document.getElementById('hostGameBtn');
+        const joinGameBtn = document.getElementById('joinGameBtn');
+        const hostGameModal = document.getElementById('hostGameModal');
+        const joinGameModal = document.getElementById('joinGameModal');
+        const closeHostModal = document.getElementById('closeHostModal');
+        const closeJoinModal = document.getElementById('closeJoinModal');
+
+        hostGameBtn.addEventListener('click', () => {
+            hostGameModal.style.display = 'block';
+        });
+
+        joinGameBtn.addEventListener('click', () => {
+            joinGameModal.style.display = 'block';
+        });
+
+        closeHostModal.addEventListener('click', () => {
+            hostGameModal.style.display = 'none';
+        });
+
+        closeJoinModal.addEventListener('click', () => {
+            joinGameModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === hostGameModal) {
+                hostGameModal.style.display = 'none';
+            }
+            if (event.target === joinGameModal) {
+                joinGameModal.style.display = 'none';
+            }
+        });
+
+        // Form handling
+        const hostGameForm = document.getElementById('hostGameForm');
+        const joinGameForm = document.getElementById('joinGameForm');
+
+        hostGameForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const hostName = document.getElementById('hostName').value;
+            let gameId = document.getElementById('gameIdHost').value;
+
+            if (!gameId) {
+                gameId = 'game_' + Math.floor(Math.random() * 1000);
+            }
+
+            // Store in session storage for use on the game page
+            sessionStorage.setItem('playerName', hostName);
+            sessionStorage.setItem('gameId', gameId);
+            sessionStorage.setItem('isHost', 'true');
+
+            // Redirect to the game page
+            window.location.href = '/game.html';
+        });
+
+        joinGameForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const playerName = document.getElementById('playerName').value;
+            const gameId = document.getElementById('gameIdJoin').value;
+
+            // Store in session storage for use on the game page
+            sessionStorage.setItem('playerName', playerName);
+            sessionStorage.setItem('gameId', gameId);
+            sessionStorage.setItem('isHost', 'false');
+
+            // Redirect to the game page
+            window.location.href = '/game.html';
+        });
+    </script>
+</body>
+
+</html>

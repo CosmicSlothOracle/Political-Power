@@ -1,0 +1,129 @@
+.card {
+    width: 280px;
+    height: 400px;
+    border-radius: 12px;
+    padding: 16px;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.charakterkarte {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+    border: 2px solid #2b6cb0;
+}
+
+.spezialkarte {
+    background: linear-gradient(135deg, #ffffff 0%, #f0fff4 100%);
+    border: 2px solid #2f855a;
+}
+
+.fallenkarte {
+    background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+    border: 2px solid #c53030;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.cardName {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0;
+}
+
+.influence {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4a5568;
+    padding: 4px 8px;
+    background: #edf2f7;
+    border-radius: 6px;
+}
+
+.cardBody {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.country {
+    font-size: 0.875rem;
+    color: #718096;
+    font-weight: 500;
+}
+
+.effect {
+    font-size: 1rem;
+    color: #2d3748;
+    margin: 0;
+}
+
+.description {
+    font-size: 0.875rem;
+    color: #4a5568;
+    margin: 0;
+    font-style: italic;
+}
+
+.cardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 8px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.campaignValue {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    background: #edf2f7;
+    color: #4a5568;
+    border-radius: 4px;
+}
+
+.playable {
+    cursor: pointer;
+}
+
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    filter: grayscale(30%);
+}
+
+.selected {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    border-width: 3px;
+}
